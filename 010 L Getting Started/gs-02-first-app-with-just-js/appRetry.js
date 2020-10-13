@@ -1,6 +1,13 @@
-const buttonEl = document.querySelector('button');
 const inputEl = document.querySelector('input');
+const buttonEl = document.querySelector('button');
 const listEl = document.querySelector('ul');
+
+function inputEnter(enterPressed) {
+  console.log(enterPressed);
+  if (enterPressed.key == 'Enter') {
+    buttonEl.click();
+  }
+}
 
 function addGoal() {
   const enteredValue = inputEl.value;
@@ -10,4 +17,5 @@ function addGoal() {
   inputEl.value = '';
 }
 
+inputEl.addEventListener('keypress', inputEnter);
 buttonEl.addEventListener('click', addGoal);
