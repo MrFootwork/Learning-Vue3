@@ -18,9 +18,23 @@
 		</header>
 		<section id="events">
 			<h2>Events in Action</h2>
-			<button @click="addToCounter">Add</button>
-			<button @click="removeFromCounter">Remove</button>
+			<button @click="addToCounter(howMuch)">Add</button><span>or</span>
+			<button @click="removeFromCounter(howMuch)">Remove</button
+			><span>by </span>
+			<input type="text" @input="storeNumber" />
 			<p>Result: {{ counter }}</p>
+			<span>What's your name? </span>
+			<input
+				type="text"
+				@input="storeName($event, 'Ting')"
+				@keyup.enter="confirmName($event)"
+			/>
+			<p>Your Name: {{ confirmedName }}</p>
+			<form @submit.prevent="submitForm">
+				<!-- <form @submit="submitForm"> -->
+				<input type="text" />
+				<button>Sign up</button>
+			</form>
 		</section>
 	</body>
 </html>
