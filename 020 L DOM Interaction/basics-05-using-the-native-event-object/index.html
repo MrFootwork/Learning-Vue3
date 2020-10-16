@@ -18,24 +18,13 @@
 		</header>
 		<section id="events">
 			<h2>Events in Action</h2>
-			<button @click="addToCounter(howMuch)">Add</button><span>or</span>
-			<button @click="removeFromCounter(howMuch)">Remove</button
-			><span>by </span>
-			<input type="text" @input="storeNumber" />
-			<p v-once>Start: {{ counter }}</p>
+			<button v-on:click="add(howMuch)">Add {{ howMuch }}</button>
+			<button v-on:click="reduce(howMuch)">Subtract {{ howMuch }}</button>
+			<input type="text" @input="storeAdder" />
 			<p>Result: {{ counter }}</p>
-			<span>What's your name? </span>
-			<input
-				type="text"
-				@input="storeName($event, 'Ting')"
-				@keyup.enter="confirmName"
-			/>
-			<p>Your Name: {{ confirmedName }}</p>
-			<form @submit.prevent="submitForm">
-				<!-- <form @submit="submitForm"> -->
-				<input type="text" />
-				<button>Sign up</button>
-			</form>
+			<input type="text" v-model="name" />
+			<button @click="resetInput">Reset Input</button>
+			<p>Your Name: {{ fullname }}</p>
 		</section>
 	</body>
 </html>

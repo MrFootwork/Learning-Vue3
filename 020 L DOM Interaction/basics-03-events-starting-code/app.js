@@ -1,7 +1,7 @@
 const app = Vue.createApp({
 	data() {
 		return {
-			counter: 0,
+			counter: 10,
 			howMuch: 0,
 			fullName: '',
 			confirmedName: '',
@@ -20,7 +20,7 @@ const app = Vue.createApp({
 		storeName(event, lastName) {
 			this.fullName = `${event.target.value} ${lastName}`
 		},
-		confirmName(event) {
+		confirmName() {
 			this.confirmedName = this.fullName
 		},
 		submitForm() {
