@@ -3,6 +3,7 @@ const app = Vue.createApp({
 		return {
 			userClass: '',
 			hidden: false,
+			userBackground: '',
 		}
 	},
 	computed: {
@@ -20,6 +21,9 @@ const app = Vue.createApp({
 		},
 		toggleHidden() {
 			this.hidden = !this.hidden
+		},
+		saveBackgroundColor(event) {
+			this.userBackground = event.target.value
 		},
 	},
 })
