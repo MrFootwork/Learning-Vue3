@@ -17,6 +17,9 @@ const app = Vue.createApp({
 			this.tasks.push(this.taskToAdd)
 			this.taskToAdd = ''
 		},
+		removeTask(index) {
+			this.tasks.splice(index, 1)
+		}
 		switchToHidden() {
 			this.isHidden = !this.isHidden
 		},

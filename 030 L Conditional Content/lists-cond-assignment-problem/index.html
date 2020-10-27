@@ -23,7 +23,11 @@
 			<input type="text" v-model="taskToAdd" @keyup.enter="addTask" />
 			<button @click="addTask">Add Task</button>
 			<ul v-show="!isHidden">
-				<li v-for="(task, index) in tasks" :key="task">
+				<li
+					v-for="(task, index) in tasks"
+					:key="task"
+					@click="removeTask(index)"
+				>
 					{{ index }}: {{ task }}
 				</li>
 			</ul>
