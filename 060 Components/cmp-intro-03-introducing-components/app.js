@@ -1,26 +1,26 @@
 const app = Vue.createApp({
-  data() {
-    return {
-      friends: [
-        {
-          id: 'manuel',
-          name: 'Manuel Lorenz',
-          phone: '01234 5678 991',
-          email: 'manuel@localhost.com',
-        },
-        {
-          id: 'julie',
-          name: 'Julie Jones',
-          phone: '09876 543 221',
-          email: 'julie@localhost.com',
-        },
-      ],
-    };
-  },
-});
+	data() {
+		return {
+			friends: [
+				{
+					id: 'manuel',
+					name: 'Manuel Lorenz',
+					phone: '01234 5678 991',
+					email: 'manuel@localhost.com',
+				},
+				{
+					id: 'julie',
+					name: 'Julie Jones',
+					phone: '09876 543 221',
+					email: 'julie@localhost.com',
+				},
+			],
+		}
+	},
+})
 
 app.component('friend-contact', {
-  template: `
+	template: `
   <li>
     <h2>{{ friend.name }}</h2>
     <button @click="toggleDetails()">
@@ -32,22 +32,22 @@ app.component('friend-contact', {
     </ul>
   </li>
   `,
-  data() {
-    return {
-      detailsAreVisible: false,
-      friend: {
-        id: 'manuel',
-        name: 'Manuel Lorenzo',
-        phone: '01234 5678 991',
-        email: 'manuel@localhost.com',
-      },
-    };
-  },
-  methods: {
-    toggleDetails() {
-      this.detailsAreVisible = !this.detailsAreVisible;
-    },
-  },
-});
+	data() {
+		return {
+			detailsAreVisible: false,
+			friend: {
+				id: 'manuel',
+				name: 'Manuel Lorenzo',
+				phone: '01234 5678 991',
+				email: 'manuel@localhost.com',
+			},
+		}
+	},
+	methods: {
+		toggleDetails() {
+			this.detailsAreVisible = !this.detailsAreVisible
+		},
+	},
+})
 
-app.mount('#app');
+app.mount('#app')
