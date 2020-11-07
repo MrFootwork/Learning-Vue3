@@ -9,6 +9,7 @@
 			<li><strong>Phone: </strong>{{ phoneNumber }}</li>
 			<li><strong>Email: </strong>{{ mailAddress }}</li>
 		</ul>
+		<button @click="$emit('delete', id)">Delete</button>
 	</li>
 </template>
 
@@ -27,7 +28,7 @@
 			mailAddress: String,
 			isFavorite: Boolean,
 		},
-		emits: ['toggle-favorite'],
+		emits: ['toggle-favorite', 'delete'],
 		// emits: {
 		// 	'toggle-favorite': function(id) {
 		// 		if (id) return true
