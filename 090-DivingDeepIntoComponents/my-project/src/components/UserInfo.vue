@@ -2,6 +2,7 @@
 	<section>
 		<base-card>
 			<template v-slot:upperSlot>
+				<!-- v-slot: = # -->
 				<h1>{{ fullName }}</h1>
 				<base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
 			</template>
@@ -17,11 +18,3 @@
 		props: ['fullName', 'infoText', 'role'],
 	}
 </script>
-
-<style scoped>
-	section header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-</style>
