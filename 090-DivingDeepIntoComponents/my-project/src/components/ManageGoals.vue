@@ -1,5 +1,5 @@
 <template>
-	<!-- Fragments possible: that <div> is not required in Vue 3 -->
+	<!-- Fragments possible: that <div> is not required in Vue 3Ö -->
 	<div>
 		<h2>Manage Goals</h2>
 		<input type="text" ref="goal" />
