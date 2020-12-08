@@ -98,6 +98,7 @@
         <label for="how-other">Other</label>
       </div>
     </div>
+    <rating-control></rating-control>
     <div>
       <button>Save Data</button>
     </div>
@@ -105,7 +106,12 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
+
 export default {
+  components: {
+    RatingControl
+  },
   data() {
     return {
       userName: '',
