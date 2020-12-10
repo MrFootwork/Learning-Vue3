@@ -98,7 +98,7 @@
         <label for="how-other">Other</label>
       </div>
     </div>
-    <rating-control></rating-control>
+    <rating-control v-model="rating"></rating-control>
     <div>
       <button>Save Data</button>
     </div>
@@ -119,7 +119,8 @@ export default {
       referrer: 'wom',
       interest: [],
       how: null,
-      userNameValidity: 'pending'
+      userNameValidity: 'pending',
+      rating: null
     };
   },
   methods: {
@@ -142,6 +143,8 @@ export default {
       console.log(this.how);
       this.interest = [];
       this.how = null;
+      console.log('Rating is: ' + this.rating);
+      this.rating = null;
     },
     validateInput() {
       if (this.userName === '') {
