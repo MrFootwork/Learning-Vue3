@@ -25,32 +25,31 @@ import SurveyResult from './SurveyResult.vue';
 export default {
   data() {
     return {
-      result: []
+      results: []
     };
   },
   methods: {
     async loadExperiences() {
-      // fetch(
-      //   'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
-      // )
-      //   .then(function(response) {
-      //     if (response.ok) {
-      //       return response.json();
-      //     }
-      //   })
-      //   .then(function(data) {
-      //     console.log(data);
-      //   });
+      this.results = [];
       const response = await fetch(
         'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
       );
       const data = await response.json();
-      console.log(data);
-      // turn the Object data into an array and assign it to result!
+      for (const id in data) {
+        this.results.push({
+          id: id,
+          name: data[id].name,
+          rating: data[id].rating
+        });
+      }
+      console.log(this.results);
     }
   },
   components: {
     SurveyResult
+  },
+  mounted() {
+    this.loadExperiences();
   }
 };
 </script>
