@@ -7,7 +7,11 @@
           >Load Submitted Experiences</base-button
         >
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <p v-else-if="!isLoading && (!results || results.length === 0)">
+        No stored experiences found. Start adding some survey results!
+      </p>
+      <ul v-else-if="!isLoading && results && results.length > 0">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -25,16 +29,19 @@ import SurveyResult from './SurveyResult.vue';
 export default {
   data() {
     return {
-      results: []
+      results: [],
+      isLoading: false
     };
   },
   methods: {
     async loadExperiences() {
       this.results = [];
+      this.isLoading = true;
       const response = await fetch(
         'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
       );
       const data = await response.json();
+      this.isLoading = false;
       for (const id in data) {
         this.results.push({
           id: id,
@@ -42,6 +49,7 @@ export default {
           rating: data[id].rating
         });
       }
+      console.log(data);
       console.log(this.results);
     }
   },
