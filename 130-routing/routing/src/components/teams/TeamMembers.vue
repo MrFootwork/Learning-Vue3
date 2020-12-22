@@ -21,13 +21,33 @@ export default {
   },
   data() {
     return {
-      teamName: 'Test',
-      members: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
-      ],
+      teamName: '',
+      members: []
     };
   },
+  inject: ['teams', 'users'],
+  created() {
+    console.log(this.$route);
+    console.log(this.$route.path); // /teams/t1
+    console.log(this.$route.params); // {teamId: "t1"}
+    const teamId = this.$route.params.teamId;
+    const selectedTeams = this.teams.find(team => team.id === teamId);
+    const selectedMembers = this.users.filter(user =>
+      selectedTeams.members.includes(user.id)
+    );
+    this.members = selectedMembers;
+    this.teamName = selectedTeams.name;
+    console.log(this.members);
+  }
+  // data() {
+  //   return {
+  //     teamName: 'Test',
+  //     members: [
+  //       { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
+  //       { id: 'u2', fullName: 'Max Schwarz', role: 'Engineer' },
+  //     ],
+  //   };
+  // },
 };
 </script>
 
