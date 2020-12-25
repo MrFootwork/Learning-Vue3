@@ -26,18 +26,24 @@ export default {
     };
   },
   inject: ['teams', 'users'],
+  props: ['teamId'],
+  watch: {
+    teamId(newId) {
+      this.loadTeamMembers(newId);
+    }
+  },
+  methods: {
+    loadTeamMembers(teamId) {
+      const selectedTeams = this.teams.find(team => team.id === teamId);
+      const selectedMembers = this.users.filter(user =>
+        selectedTeams.members.includes(user.id)
+      );
+      this.members = selectedMembers;
+      this.teamName = selectedTeams.name;
+    }
+  },
   created() {
-    console.log(this.$route);
-    console.log(this.$route.path); // /teams/t1
-    console.log(this.$route.params); // {teamId: "t1"}
-    const teamId = this.$route.params.teamId;
-    const selectedTeams = this.teams.find(team => team.id === teamId);
-    const selectedMembers = this.users.filter(user =>
-      selectedTeams.members.includes(user.id)
-    );
-    this.members = selectedMembers;
-    this.teamName = selectedTeams.name;
-    console.log(this.members);
+    this.loadTeamMembers(this.teamId);
   }
   // data() {
   //   return {
