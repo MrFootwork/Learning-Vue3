@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     loadTeamMembers(teamId) {
+      console.log(this.$route.query); //accessing the query paramter
       const selectedTeams = this.teams.find(team => team.id === teamId);
       const selectedMembers = this.users.filter(user =>
         selectedTeams.members.includes(user.id)
