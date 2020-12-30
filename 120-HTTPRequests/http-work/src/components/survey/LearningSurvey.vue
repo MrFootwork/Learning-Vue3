@@ -76,19 +76,19 @@ export default {
       // });
 
       this.error = null;
-      fetch(
-        'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: this.enteredName,
-            rating: this.chosenRating
-          })
-        }
-      )
+      const url =
+        'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json';
+      const fetchConfig = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: this.enteredName,
+          rating: this.chosenRating
+        })
+      };
+      fetch(url, fetchConfig)
         .then(response => {
           if (response.ok) {
             //..

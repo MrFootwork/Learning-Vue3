@@ -43,9 +43,9 @@ export default {
       this.isLoading = true;
       this.error = null;
       try {
-        const response = await fetch(
-          'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json'
-        );
+        const url =
+          'https://vue-http-demo-7bbe9-default-rtdb.europe-west1.firebasedatabase.app/surveys.json';
+        const response = await fetch(url);
         const data = await response.json();
         this.isLoading = false;
         for (const id in data) {

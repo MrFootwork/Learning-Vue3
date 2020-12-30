@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     loadTeamMembers(teamId) {
-      console.log(this.$route.query); //accessing the query paramter
+      // console.log(this.$route.query); //accessing the query paramter
       const selectedTeams = this.teams.find(team => team.id === teamId);
       const selectedMembers = this.users.filter(user =>
         selectedTeams.members.includes(user.id)
@@ -45,6 +45,14 @@ export default {
   },
   created() {
     this.loadTeamMembers(this.teamId);
+  },
+  //alternative to watch:
+  //getting params via routing
+  beforeRouteUpdate(to, from, next) {
+    console.log('beforeRouteUpdate TeamMembers cmp');
+    console.log(to, from);
+    // this.loadTeamMembers(to.params.teamId);
+    next();
   }
   // data() {
   //   return {

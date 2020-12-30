@@ -17,8 +17,8 @@ export default {
         return 'role--consultant';
       }
       return null;
-    },
-  },
+    }
+  }
 };
 </script>
 
