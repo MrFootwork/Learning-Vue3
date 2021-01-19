@@ -1,14 +1,18 @@
 <template>
   <li>
-    <h3>{{ fullName }}</h3>
-    <h4>${{ rate }}/hour</h4>
-    <div>
-      <span v-for="area in areas" :key="area">{{ area }}</span>
-    </div>
-    <div>
-      <router-link :to="coachContactLink">Contact</router-link>
-      <router-link :to="coachDetailsLink">View Details</router-link>
-    </div>
+    <base-card>
+      <h3>{{ fullName }}</h3>
+      <h4>${{ rate }}/hour</h4>
+      <div>
+        <span v-for="area in areas" :key="area">{{ area }}</span>
+      </div>
+      <div>
+        <base-button mode="outline" link to="coachContactLink"
+          >Contact</base-button
+        >
+        <base-button link to="coachDetailsLink">View Details</base-button>
+      </div>
+    </base-card>
   </li>
 </template>
 
@@ -30,12 +34,12 @@ export default {
 </script>
 
 <style scoped>
-li {
+/* li {
   margin: 1rem 0;
   border: 1px solid #424242;
   border-radius: 12px;
   padding: 1rem;
-}
+} */
 
 h3 {
   font-size: 1.5rem;
